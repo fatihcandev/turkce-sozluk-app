@@ -1,7 +1,7 @@
 import * as React from "react";
 import Svg, { Path } from "react-native-svg";
 
-function SvgHistory(props) {
+function SvgX(props) {
   return (
     <Svg
       width={24}
@@ -12,14 +12,13 @@ function SvgHistory(props) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="history_svg__feather history_svg__feather-rotate-ccw"
+      className="x_svg__feather x_svg__feather-x"
       classname=""
       {...props}
     >
-      <Path d="M1 4v6h6" />
-      <Path d="M3.51 15a9 9 0 102.13-9.36L1 10" />
+      <Path d="M18 6L6 18M6 6l12 12" />
     </Svg>
   );
 }
 
-export default SvgHistory;
+export default SvgX;

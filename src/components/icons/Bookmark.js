@@ -6,10 +6,10 @@ function SvgBookmark(props) {
     <Svg
       width={24}
       height={24}
-      className=""
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
+      classname=""
       {...props}
     >
       <Path
