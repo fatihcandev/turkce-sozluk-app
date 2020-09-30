@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from "react-native";
 import theme from "../../utils/theme";
 import Box from "../Box";
 import Button from "../Button";
@@ -17,12 +18,7 @@ function TabBar({ state, descriptors, navigation }) {
       flexDirection="row"
       width="100%"
       justifyContent="space-around"
-      style={{
-        shadowColor: "#000",
-        shadowOpacity: 0.1,
-        shadowRadius: 20,
-        elevation: 15
-      }}
+      style={styles.container}
     >
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
@@ -79,3 +75,12 @@ function TabBar({ state, descriptors, navigation }) {
 }
 
 export default TabBar;
+
+const styles = StyleSheet.create({
+  container: {
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 20,
+    elevation: 15
+  }
+});
