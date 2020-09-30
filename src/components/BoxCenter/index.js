@@ -1,4 +1,3 @@
-import { View } from "react-native";
 import styled from "styled-components";
 import Box from "../Box";
 
