@@ -1,5 +1,6 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { ThemeProvider } from "styled-components";
 import TabBar from "./src/components/TabBar";
@@ -13,16 +14,18 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <Tab.Navigator
-          initialRouteName="Home"
-          tabBar={props => <TabBar {...props} />}
-        >
-          <Tab.Screen name="History" component={History} />
-          <Tab.Screen name="Home" component={HomeStackComponent} />
-          <Tab.Screen name="Favorites" component={Favorites} />
-        </Tab.Navigator>
-      </NavigationContainer>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Tab.Navigator
+            initialRouteName="Home"
+            tabBar={props => <TabBar {...props} />}
+          >
+            <Tab.Screen name="History" component={History} />
+            <Tab.Screen name="Home" component={HomeStackComponent} />
+            <Tab.Screen name="Favorites" component={Favorites} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
     </ThemeProvider>
   );
 }
