@@ -7,13 +7,12 @@ import Box from "../../components/Box";
 const Favorites = () => {
   useFocusEffect(
     useCallback(() => {
-      StatusBar.setBarStyle("default");
+      StatusBar.setBarStyle("light-content");
     }, [])
   );
 
   return (
     <Box as={SafeAreaView} flex={1}>
-      <StatusBar style="dark" />
       <Text>Favorites</Text>
     </Box>
   );
