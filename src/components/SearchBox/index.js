@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Keyboard } from "react-native";
 import Box from "../Box";
 import Text from "../Text";
@@ -7,9 +7,13 @@ import Button from "../Button";
 import { Search, X } from "../icons";
 import theme from "../../utils/theme";
 
-const SearchBox = () => {
+const SearchBox = ({ onFocusChanged }) => {
   const [focused, setFocused] = useState(false);
   const [value, setValue] = useState("");
+
+  useEffect(() => {
+    onFocusChanged(focused)
+  }, [focused]);
 
   const handleBlur = () => {
     setFocused(false);
@@ -31,7 +35,8 @@ const SearchBox = () => {
             shadowOffset: {
               width: 0,
               height: 10
-            }
+            },
+            elevation: 5
           }}
           bg="white"
           color="textDark"
