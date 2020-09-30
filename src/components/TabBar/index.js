@@ -1,5 +1,4 @@
 import React from "react";
-import { View } from "react-native";
 import theme from "../../utils/theme";
 import Box from "../Box";
 import Button from "../Button";
@@ -13,11 +12,16 @@ function TabBar({ state, descriptors, navigation }) {
   }
 
   return (
-    <View
+    <Box
+      bg="white"
+      flexDirection="row"
+      width="100%"
+      justifyContent="space-around"
       style={{
-        flexDirection: "row",
-        width: "100%",
-        justifyContent: "space-around"
+        shadowColor: "#000",
+        shadowOpacity: 0.1,
+        shadowRadius: 20,
+        elevation: 15
       }}
     >
       {state.routes.map((route, index) => {
@@ -70,7 +74,7 @@ function TabBar({ state, descriptors, navigation }) {
           </Button>
         );
       })}
-    </View>
+    </Box>
   );
 }
 
