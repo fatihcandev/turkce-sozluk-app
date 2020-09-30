@@ -7,7 +7,7 @@ const HomeStack = createStackNavigator();
 
 const HomeStackComponent = () => {
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator headerMode="none">
       <HomeStack.Screen name="Home" component={Home} />
       <HomeStack.Screen name="Detail" component={DetailView} />
     </HomeStack.Navigator>
