@@ -18,7 +18,7 @@ export default function App() {
         <NavigationContainer>
           <Tab.Navigator
             initialRouteName="Home"
-            tabBar={props => <TabBar {...props} />}
+            tabBar={(props) => <TabBar {...props} />}
           >
             <Tab.Screen name="History" component={History} />
             <Tab.Screen name="Home" component={HomeStackComponent} />

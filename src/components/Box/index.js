@@ -6,9 +6,13 @@ import {
   color,
   size,
   space,
-  borderRadius
+  borderRadius,
+  position,
+  border
 } from "styled-system";
 
-const Box = styled(View)(compose(flexbox, color, size, space, borderRadius));
+const Box = styled(View)(
+  compose(flexbox, color, size, space, borderRadius, position, border)
+);
 
 export default Box;

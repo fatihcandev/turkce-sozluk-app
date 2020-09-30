@@ -11,7 +11,7 @@ import {
 } from "styled-system";
 import theme from "../../utils/theme";
 
-const Input = styled(TextInput).attrs(props => ({
+const Input = styled(TextInput).attrs((props) => ({
   placeholderTextColor: theme.colors[props.placeholderTextColor]
 }))(compose(typography, color, size, space, borderRadius, shadow));
 
