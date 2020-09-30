@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Keyboard } from "react-native";
+import { Keyboard, StyleSheet } from "react-native";
 import Box from "../Box";
 import Text from "../Text";
 import Input from "../Input";
@@ -12,8 +12,8 @@ const SearchBox = ({ onFocusChanged }) => {
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    onFocusChanged(focused)
-  }, [focused]);
+    onFocusChanged(focused);
+  }, [onFocusChanged, focused]);
 
   const handleBlur = () => {
     setFocused(false);
@@ -28,16 +28,7 @@ const SearchBox = ({ onFocusChanged }) => {
     <Box flexDirection="row" alignItems="center">
       <Box flex={1} position="relative">
         <Input
-          style={{
-            shadowColor: "#000",
-            shadowRadius: 24,
-            shadowOpacity: 0.1,
-            shadowOffset: {
-              width: 0,
-              height: 10
-            },
-            elevation: 5
-          }}
+          style={styles.input}
           bg="white"
           color="textDark"
           borderWidth={1}
@@ -49,7 +40,7 @@ const SearchBox = ({ onFocusChanged }) => {
           placeholderTextColor="textMedium"
           pl={52}
           onFocus={() => setFocused(true)}
-          onChangeText={text => setValue(text)}
+          onChangeText={(text) => setValue(text)}
           value={value}
         />
         {value.length > 0 && (
@@ -71,3 +62,16 @@ const SearchBox = ({ onFocusChanged }) => {
 };
 
 export default SearchBox;
+
+const styles = StyleSheet.create({
+  input: {
+    shadowColor: "#000",
+    shadowRadius: 24,
+    shadowOpacity: 0.1,
+    shadowOffset: {
+      width: 0,
+      height: 10
+    },
+    elevation: 5
+  }
+});
