@@ -1,9 +1,7 @@
 import React, { useCallback, useRef, useState } from "react";
 import {
-  Text,
   StatusBar,
   Animated,
-  ImageBackground,
   FlatList
 } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
@@ -11,25 +9,27 @@ import Box from "../../components/Box";
 import { Logo } from "../../components/icons";
 import SearchBox from "../../components/SearchBox";
 import Card from "../../components/Card";
-import bg from "../../../assets/bg-red.jpg";
+import SimpleCard from "../../components/SimpleCard";
+import Text from "../../components/Text";
 
 const DATA = [
   {
     id: "1",
     title: "on para",
     desc: "çok az (para).",
-    type: "Bir Deyim"
+    outerTitle: "Bir Deyim"
   },
   {
     id: "2",
     title: "siyem siyem ağlamak",
     desc: "hafif hafif, ince ince, durmadan gözyaşı dökmek.",
-    type: "Bir Deyim - Atasözü"
+    outerTitle: "Bir Deyim - Atasözü"
   }
 ];
 
 const Home = ({ navigation }) => {
-  const heroHeight = useRef(new Animated.Value(285)).current;
+  const heroHeight = useRef(new Animated.Value(250)).current;
+  const bgOpacity = useRef(new Animated.Value(1)).current;
   const [searchFocused, setSearchFocused] = useState(false);
 
   const handleFocusChange = useCallback(() => {
@@ -39,14 +39,24 @@ const Home = ({ navigation }) => {
         duration: 350,
         useNativeDriver: false
       }).start();
+      Animated.timing(bgOpacity, {
+        toValue: 0,
+        duration: 500,
+        useNativeDriver: false
+      }).start();
     } else {
       Animated.timing(heroHeight, {
-        toValue: 285,
+        toValue: 250,
         duration: 350,
         useNativeDriver: false
       }).start();
+      Animated.timing(bgOpacity, {
+        toValue: 1,
+        duration: 500,
+        useNativeDriver: false
+      }).start();
     }
-  }, [heroHeight, searchFocused]);
+  }, [bgOpacity, heroHeight, searchFocused]);
 
   useFocusEffect(
     useCallback(() => {
@@ -64,11 +74,12 @@ const Home = ({ navigation }) => {
       >
         {!searchFocused && (
           <Box
-            as={ImageBackground}
-            source={bg}
+            as={Animated.View}
+            bg="red"
             style={{
               width: "100%",
-              height: "100%"
+              height: "100%",
+              opacity: bgOpacity
             }}
             alignItems="center"
             justifyContent="center"
@@ -95,18 +106,30 @@ const Home = ({ navigation }) => {
       </Box>
       <Box flex={1} bg="softRed" pt={searchFocused ? 0 : 26}>
         {searchFocused ? (
-          <Box p={30} flex={1}>
-            <Text>Geçmiş</Text>
+          <Box flex={1}>
+            <FlatList
+              style={{
+                padding: 16
+              }}
+              data={DATA}
+              renderItem={({ item }) => (
+                <SimpleCard title={item.title} py={6} />
+              )}
+              keyExtractor={(item) => item.id}
+              ListHeaderComponent={(
+                <Text color="textLight" mb={10}>SON ARAMALAR</Text>
+              )}
+            />
           </Box>
         ) : (
-            <Box px={16} py={40} flex={1}>
+            <Box px={16} pt={15} flex={1}>
               <FlatList
                 data={DATA}
                 renderItem={({ item }) => (
                   <Card
                     title={item.title}
                     desc={item.desc}
-                    type={item.type}
+                    outerTitle={item.outerTitle}
                     onPress={() => navigation.navigate("Detail")}
                     my={20}
                   />
