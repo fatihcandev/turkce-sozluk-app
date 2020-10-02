@@ -12,8 +12,7 @@ function SvgX(props) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="x_svg__feather x_svg__feather-x"
-      classname=""
+      className=""
       {...props}
     >
       <Path d="M18 6L6 18M6 6l12 12" />
