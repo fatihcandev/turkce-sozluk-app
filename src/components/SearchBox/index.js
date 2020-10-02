@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Keyboard, StyleSheet } from "react-native";
+import { Keyboard } from "react-native";
 import Box from "../Box";
 import Text from "../Text";
 import Input from "../Input";
@@ -28,11 +28,10 @@ const SearchBox = ({ onFocusChanged }) => {
     <Box flexDirection="row" alignItems="center">
       <Box flex={1} position="relative">
         <Input
-          style={styles.input}
           bg="white"
           color="textDark"
           borderWidth={1}
-          borderColor={focused ? "#D1D1D1" : "transparent"}
+          borderColor="#D1D1D1"
           mt={20}
           height={52}
           borderRadius="normal"
@@ -53,7 +52,7 @@ const SearchBox = ({ onFocusChanged }) => {
         </Box>
       </Box>
       {focused && (
-        <Button pl={14} height={52} onPress={handleBlur}>
+        <Button onPress={handleBlur} pl={14} mt={20}>
           <Text>Vazgeç</Text>
         </Button>
       )}
@@ -62,16 +61,3 @@ const SearchBox = ({ onFocusChanged }) => {
 };
 
 export default SearchBox;
-
-const styles = StyleSheet.create({
-  input: {
-    shadowColor: "#000",
-    shadowRadius: 24,
-    shadowOpacity: 0.1,
-    shadowOffset: {
-      width: 0,
-      height: 10
-    },
-    elevation: 5
-  }
-});
