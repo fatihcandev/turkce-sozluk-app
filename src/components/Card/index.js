@@ -3,11 +3,11 @@ import Box from "../Box";
 import Button from "../Button";
 import Text from "../Text";
 
-const Card = ({ title, desc, type, onPress, ...props }) => {
+const Card = ({ title, desc, outerTitle, onPress, ...props }) => {
   return (
     <Box {...props}>
       <Text color="textLight" mb={10}>
-        {type}
+        {outerTitle}
       </Text>
       <Button
         py={16}
