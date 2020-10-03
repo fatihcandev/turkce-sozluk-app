@@ -15,6 +15,10 @@ const Card = ({ title, desc, outerTitle, onPress, ...props }) => {
         bg="white"
         borderRadius="normal"
         onPress={onPress}
+        alignItems="flex-start"
+        style={{
+          elevation: 1
+        }}
       >
         <Box flex={1} borderLeftWidth={3} borderLeftColor="light" pl={12}>
           <Text fontSize={18} fontWeight="bold">
