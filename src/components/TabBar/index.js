@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 import theme from "../../utils/theme";
 import Box from "../Box";
 import Button from "../Button";
-import { Bookmark, History, Search } from "../icons";
 
 function TabBar({ state, descriptors, navigation }) {
   const focusedOptions = descriptors[state.routes[state.index].key].options;
@@ -49,9 +48,14 @@ function TabBar({ state, descriptors, navigation }) {
 
         return label === "Home" ? (
           <Box key={label} p={15} mt={-15} bg="white" borderRadius="full">
-            <Button size={56} bg="red" borderRadius="full" onPress={onPress}>
-              <Search stroke="white" />
-            </Button>
+            <Button
+              color="white"
+              iconType="search"
+              size={56}
+              bg="red"
+              borderRadius="full"
+              onPress={onPress}
+            />
           </Box>
         ) : (
           <Button
@@ -59,15 +63,12 @@ function TabBar({ state, descriptors, navigation }) {
             onPress={onPress}
             flexDirection="column"
             height={56}
-          >
-            {label === "History" && <History color={focusColor} />}
-            {label === "Favorites" && (
-              <Bookmark
-                color={focusColor}
-                fill={isFocused && theme.colors.red}
-              />
-            )}
-          </Button>
+            color={focusColor}
+            iconFillColor={
+              label === "Favorites" && isFocused && theme.colors.red
+            }
+            iconType={label === "History" ? "history" : "bookmark"}
+          />
         );
       })}
     </Box>
