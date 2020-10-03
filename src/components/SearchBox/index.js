@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Keyboard } from "react-native";
 import Box from "../Box";
-import Text from "../Text";
 import Input from "../Input";
 import Button from "../Button";
-import { Search, X } from "../icons";
+import Text from "../Text";
+import { Search } from "../icons";
 import theme from "../../utils/theme";
 
 const SearchBox = ({ onFocusChanged }) => {
@@ -28,10 +28,14 @@ const SearchBox = ({ onFocusChanged }) => {
     <Box flexDirection="row" alignItems="center">
       <Box flex={1} position="relative">
         <Input
+          zIndex={10}
           bg="white"
           color="textDark"
           borderWidth={1}
           borderColor="#D1D1D1"
+          style={{
+            elevation: 2
+          }}
           mt={20}
           height={52}
           borderRadius="normal"
@@ -43,11 +47,26 @@ const SearchBox = ({ onFocusChanged }) => {
           value={value}
         />
         {value.length > 0 && (
-          <Button onPress={handleClear} position="absolute" right={10} top={35}>
-            <X color={theme.colors.textDark} />
-          </Button>
+          <Button
+            color={theme.colors.textDark}
+            iconType="x"
+            onPress={handleClear}
+            position="absolute"
+            right={10}
+            top={35}
+            style={{
+              elevation: 3
+            }}
+          />
         )}
-        <Box position="absolute" left={15} top={35}>
+        <Box
+          position="absolute"
+          left={15}
+          top={35}
+          style={{
+            elevation: 3
+          }}
+        >
           <Search color={theme.colors.textMedium} />
         </Box>
       </Box>
