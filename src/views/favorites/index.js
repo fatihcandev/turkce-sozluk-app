@@ -7,7 +7,7 @@ import Box from "../../components/Box";
 const Favorites = () => {
   useFocusEffect(
     useCallback(() => {
-      StatusBar.setBarStyle("light-content");
+      StatusBar.setBarStyle("dark-content");
     }, [])
   );
 
