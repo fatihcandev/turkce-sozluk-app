@@ -1,5 +1,9 @@
 export { default as Bookmark } from "./Bookmark";
+export { default as ChevronLeft } from "./ChevronLeft";
+export { default as Hand } from "./Hand";
 export { default as History } from "./History";
 export { default as Logo } from "./Logo";
+export { default as MoreHorizontal } from "./MoreHorizontal";
 export { default as Search } from "./Search";
+export { default as Voice } from "./Voice";
 export { default as X } from "./X";

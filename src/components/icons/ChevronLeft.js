@@ -1,7 +1,7 @@
 import * as React from "react";
 import Svg, { Path } from "react-native-svg";
 
-function SvgHistory(props) {
+function SvgChevronLeft(props) {
   return (
     <Svg
       width={24}
@@ -15,10 +15,9 @@ function SvgHistory(props) {
       className=""
       {...props}
     >
-      <Path d="M1 4v6h6" />
-      <Path d="M3.51 15a9 9 0 102.13-9.36L1 10" />
+      <Path d="M15 18l-6-6 6-6" />
     </Svg>
   );
 }
 
-export default SvgHistory;
+export default SvgChevronLeft;

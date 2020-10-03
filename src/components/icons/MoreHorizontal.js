@@ -1,7 +1,7 @@
 import * as React from "react";
-import Svg, { Path } from "react-native-svg";
+import Svg, { Circle } from "react-native-svg";
 
-function SvgHistory(props) {
+function SvgMoreHorizontal(props) {
   return (
     <Svg
       width={24}
@@ -15,10 +15,11 @@ function SvgHistory(props) {
       className=""
       {...props}
     >
-      <Path d="M1 4v6h6" />
-      <Path d="M3.51 15a9 9 0 102.13-9.36L1 10" />
+      <Circle cx={12} cy={12} r={1} />
+      <Circle cx={19} cy={12} r={1} />
+      <Circle cx={5} cy={12} r={1} />
     </Svg>
   );
 }
 
-export default SvgHistory;
+export default SvgMoreHorizontal;
