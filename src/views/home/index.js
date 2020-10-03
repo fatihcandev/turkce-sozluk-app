@@ -1,9 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import {
-  StatusBar,
-  Animated,
-  FlatList
-} from "react-native";
+import { StatusBar, Animated, FlatList } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import Box from "../../components/Box";
 import { Logo } from "../../components/icons";
@@ -116,28 +112,34 @@ const Home = ({ navigation }) => {
                 <SimpleCard title={item.title} py={6} />
               )}
               keyExtractor={(item) => item.id}
-              ListHeaderComponent={(
-                <Text color="textLight" mb={10}>SON ARAMALAR</Text>
-              )}
+              ListHeaderComponent={
+                <Text color="textLight" mb={10}>
+                  SON ARAMALAR
+                </Text>
+              }
             />
           </Box>
         ) : (
-            <Box px={16} pt={15} flex={1}>
-              <FlatList
-                data={DATA}
-                renderItem={({ item }) => (
-                  <Card
-                    title={item.title}
-                    desc={item.desc}
-                    outerTitle={item.outerTitle}
-                    onPress={() => navigation.navigate("Detail")}
-                    my={20}
-                  />
-                )}
-                keyExtractor={(item) => item.id}
-              />
-            </Box>
-          )}
+          <Box px={16} pt={15} flex={1}>
+            <FlatList
+              data={DATA}
+              renderItem={({ item }) => (
+                <Card
+                  title={item.title}
+                  desc={item.desc}
+                  outerTitle={item.outerTitle}
+                  onPress={() =>
+                    navigation.navigate("Detail", {
+                      title: item.title
+                    })
+                  }
+                  my={20}
+                />
+              )}
+              keyExtractor={(item) => item.id}
+            />
+          </Box>
+        )}
       </Box>
     </Box>
   );
