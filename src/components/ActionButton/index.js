@@ -1,7 +1,6 @@
 import React from "react";
 import theme from "../../utils/theme";
 import Button from "../Button";
-import Text from "../Text";
 
 const ActionButton = ({
   children,
@@ -23,11 +22,7 @@ const ActionButton = ({
       }}
       {...props}
     >
-      {children && (
-        <Text color={color} fontWeight="bold">
-          {children}
-        </Text>
-      )}
+      {children}
     </Button>
   );
 };
