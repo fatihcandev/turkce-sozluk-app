@@ -1,12 +1,13 @@
-import React, { useCallback, useRef, useState } from "react";
-import { StatusBar, Animated, FlatList } from "react-native";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { StatusBar, Animated, FlatList, ActivityIndicator } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import Box from "../../components/Box";
-import { Logo } from "../../components/icons";
+import BoxCenter from "../../components/BoxCenter";
 import SearchBox from "../../components/SearchBox";
 import Card from "../../components/Card";
 import SimpleCard from "../../components/SimpleCard";
 import Text from "../../components/Text";
+import { Logo } from "../../components/icons";
 
 const DATA = [
   {
@@ -27,6 +28,17 @@ const Home = ({ navigation }) => {
   const heroHeight = useRef(new Animated.Value(250)).current;
   const bgOpacity = useRef(new Animated.Value(1)).current;
   const [searchFocused, setSearchFocused] = useState(false);
+  const [initialData, setInitialData] = useState(null);
+
+  const getInitialData = useCallback(async () => {
+    const res = await fetch("https://sozluk.gov.tr/icerik");
+    const data = await res.json();
+    setInitialData(data);
+  }, []);
+
+  useEffect(() => {
+    getInitialData();
+  }, [getInitialData]);
 
   const handleFocusChange = useCallback(() => {
     if (searchFocused) {
@@ -119,26 +131,34 @@ const Home = ({ navigation }) => {
               }
             />
           </Box>
-        ) : (
-          <Box px={16} pt={15} flex={1}>
-            <FlatList
-              data={DATA}
-              renderItem={({ item }) => (
-                <Card
-                  title={item.title}
-                  desc={item.desc}
-                  outerTitle={item.outerTitle}
-                  onPress={() =>
-                    navigation.navigate("Detail", {
-                      title: item.title
-                    })
-                  }
-                  my={20}
-                />
-              )}
-              keyExtractor={(item) => item.id}
+        ) : initialData ? (
+          <Box px={16} flex={1}>
+            <Card
+              title={initialData.kelime[0].madde}
+              desc={initialData.kelime[0].anlam}
+              outerTitle="Bir kelime"
+              onPress={() =>
+                navigation.navigate("Detail", {
+                  title: initialData.kelime[0].madde
+                })
+              }
+              my={15}
+            />
+            <Card
+              title={initialData.atasoz[0].madde}
+              desc={initialData.atasoz[0].anlam}
+              outerTitle="Bir deyim - atasözü"
+              onPress={() =>
+                navigation.navigate("Detail", {
+                  title: initialData.atasoz[0].madde
+                })
+              }
             />
           </Box>
+        ) : (
+          <BoxCenter>
+            <ActivityIndicator size="large" color="red" />
+          </BoxCenter>
         )}
       </Box>
     </Box>
