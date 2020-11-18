@@ -2,7 +2,7 @@
 
 ## Türkçe Sözlük
 
-Bu mobil uygulama TDK'nın resmî olmayan Türkçe Sözlük uygulamasına ait video dersleri takip edip yapılmıştır.
+Bu mobil uygulama Adem İlter'in youtube kanalındaki TDK'nın resmî olmayan Türkçe Sözlük uygulamasının yapım aşamasına ait video dersleri takip edip yapılmıştır.
 
 #### Tasarım
 
